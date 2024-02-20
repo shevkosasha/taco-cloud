@@ -10,9 +10,13 @@
 <img th:src="@{/images/taco-cloud.png}"/>
 <form method="POST" th:object="${design}">
 <!--    form-->
+<!--    <span class="validationError"-->
+<!--          th:if="${#fields.hasErrors('design')}"-->
+<!--          th:errors="*{design}">Taco Errorr</span>-->
     <div class="grid">
         <div class="ingredient-group" id="wraps">
             <h3>Designate your wrap:</h3>
+
             <div th:each="ingredient : ${wrap}">
                 <input name="ingredients" type="checkbox" th:value="${ingredient.id}"
                 />
@@ -55,7 +59,10 @@
         <h3>Name your taco creation:</h3>
 <!--        <input type="text" th:field="*{name}" th:value="${client.name}" th:name="clientName"/>-->
         <input type="text" th:value="${name}" th:name="name"/>
-
+<!--        <input type="text" th:field="${name}"/>-->
+<!--        <span class="validationError"-->
+<!--              th:if="${#fields.hasErrors('name')}"-->
+<!--              th:errors="*{name}">Name Errorr</span>-->
         <br/>
         <button>Submit your taco</button>
     </div>
